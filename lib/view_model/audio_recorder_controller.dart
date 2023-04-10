@@ -10,27 +10,14 @@ class AudioRecorderController {
   String? _recordingFilePath;
 
   Future<void> startRecording() async {
-    if (_recordingFilePath == null) {
-      await _recorder.openRecorder();
-      await _recorder.startRecorder(toFile: 'temp.wav');
-    } else {
-      await _recorder.resumeRecorder();
-    }
-  }
-
-  Future<void> pauseRecording() async {
-    await _recorder.pauseRecorder();
+    await _recorder.openRecorder();
+    await _recorder.startRecorder(toFile: 'temp.wav');
   }
 
   Future<String?> stopRecording() async {
+    // tempFilePath = /Users/eomtaejun/Library/Developer/CoreSimulator/Devices/8F76A02B-7407-4901-9286-0F7558F271A6/data/Containers/Data/Application/043B08A0-CE37-4FE5-BBCF-BFEBF76056A8/tmp/temp.wav
     String? tempFilePath = await _recorder.stopRecorder();
-    if (tempFilePath != null && tempFilePath.isNotEmpty) {
-      if (_recordingFilePath == null) {
-        _recordingFilePath = tempFilePath;
-      } else {
-        await _appendAudioDataToFile(_recordingFilePath!, tempFilePath);
-      }
-    }
+    _recordingFilePath = tempFilePath;
     await _recorder.closeRecorder();
     return _recordingFilePath;
   }
@@ -53,35 +40,6 @@ class AudioRecorderController {
       log(response.body);
       return false;
     }
-  }
-
-  /*  Binary Data 로 SendAudioData 보내기
-   *  Future<bool> sendAudioData(String filePath) async {
-   *    var request = http.MultipartRequest(
-   *        'POST',
-   *        Uri.parse(
-   *            'https://wgmywho6v8.execute-api.ap-northeast-2.amazonaws.com/v1/answer'));
-   *    request.files.add(await http.MultipartFile.fromPath('audio', filePath));
-   *    var response = await request.send();
-   *    if (response.statusCode == 200) {
-   *      print('Audio data successfully sent to API');
-   *      return true;
-   *    } else {
-   *      print('Failed to send audio data to API');
-   *      return false;
-   *    }
-   *  }
-   */
-
-  Future<void> _appendAudioDataToFile(
-      String existingFilePath, String newFilePath) async {
-    File existingFile = File(existingFilePath);
-    File newFile = File(newFilePath);
-    List<int> existingData = await existingFile.readAsBytes();
-    List<int> newData = await newFile.readAsBytes();
-    List<int> combinedData = List<int>.from(existingData)..addAll(newData);
-    await existingFile.writeAsBytes(combinedData);
-    await newFile.delete();
   }
 
   void dispose() {
