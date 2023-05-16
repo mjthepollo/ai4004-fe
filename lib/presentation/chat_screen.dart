@@ -1,9 +1,77 @@
+import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import '../util/util.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class ChatScreen extends StatefulWidget {
+  final AudioRecorderController audioRecorderController;
+  const ChatScreen({
+    required this.audioRecorderController,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  bool _isRecording = false;
+  bool _ableRecording = true;
+  bool _talkingAI = false;
+
+  void _onRecordButtonPressed() async {
+    setState(() {
+      _isRecording = !_isRecording;
+    });
+
+    if (_isRecording) {
+      await widget.audioRecorderController.startRecording();
+    } else {
+      setState(() {
+        _ableRecording = !_ableRecording;
+      });
+      String? filePath = await widget.audioRecorderController.stopRecording();
+      if (filePath != null) {
+        String audioUrl =
+            await widget.audioRecorderController.sendAudioData(filePath);
+        // DEBUG: Play audio file
+        AudioPlayer audioPlayer = AudioPlayer();
+
+        if (audioUrl != '') {
+          await audioPlayer.setSourceUrl(audioUrl);
+          setState(() {
+            _talkingAI = !_talkingAI;
+          });
+          Duration? duration = await audioPlayer.getDuration();
+          await audioPlayer.play(UrlSource(audioUrl));
+          if (duration != null) {
+            await Future.delayed(duration, () {
+              setState(() {
+                _talkingAI = !_talkingAI;
+                _ableRecording = !_ableRecording;
+              });
+            });
+          }
+        } else {
+          await audioPlayer.setSourceDeviceFile(filePath);
+          setState(() {
+            _talkingAI = !_talkingAI;
+          });
+          Duration? duration = await audioPlayer.getDuration();
+          await audioPlayer.play(DeviceFileSource(filePath));
+          if (duration != null) {
+            await Future.delayed(duration, () {
+              setState(() {
+                _talkingAI = !_talkingAI;
+                _ableRecording = !_ableRecording;
+              });
+            });
+          }
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,29 +104,40 @@ class ChatScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Figma Flutter Generator Rectangle11Widget - RECTANGLE
             Positioned(
-              // ok3EW (26:188)
               left: 25 * fem,
               top: 182 * fem,
-              child: Align(
-                child: SizedBox(
-                  width: 85 * fem,
-                  height: 81 * fem,
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: Text(
-                      'OK',
-                      style: SafeGoogleFont(
-                        'SUITE',
-                        fontSize: 64 * ffem,
-                        fontWeight: FontWeight.w900,
-                        height: 1.2575 * ffem / fem,
-                        color: const Color(0xb2b92771),
-                      ),
+              child: Container(
+                  width: 332 * fem,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
                     ),
-                  ),
-                ),
-              ),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      stops: const [0.3, 0.8],
+                      colors: _isRecording
+                          ? [
+                              const Color.fromRGBO(107, 204, 120, 0.8),
+                              const Color.fromRGBO(107, 204, 120, 0),
+                            ]
+                          : _ableRecording
+                              ? [
+                                  const Color.fromRGBO(170, 51, 109, 0.8),
+                                  const Color.fromRGBO(170, 51, 109, 0)
+                                ]
+                              : [
+                                  const Color.fromRGBO(72, 72, 72, 0.8),
+                                  const Color.fromRGBO(72, 72, 72, 0)
+                                ],
+                    ),
+                  )),
             ),
             Positioned(
               // qgA (90110535)
@@ -66,7 +145,7 @@ class ChatScreen extends StatelessWidget {
               top: 20 * fem,
               child: SizedBox(
                 width: baseWidth,
-                height: 31 * fem,
+                height: 3000 * fem,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -192,28 +271,51 @@ class ChatScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      // nvA (36324085)
-                      margin: EdgeInsets.fromLTRB(
-                          145 * fem, 0 * fem, 0 * fem, 0 * fem),
-                      width: 68 * fem,
-                      height: 68 * fem,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xfffefdff)),
-                        color: const Color(0x00d9d9d9),
-                        borderRadius: BorderRadius.circular(34 * fem),
-                      ),
-                      child: Center(
-                        // rectangle9aKp (26:109)
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 55 * fem,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(27.5 * fem),
-                              color: const Color(0xffb92771),
-                            ),
-                          ),
+                    GestureDetector(
+                      onTap: () {
+                        print("hi");
+                        if (_ableRecording) {
+                          _onRecordButtonPressed();
+                        }
+                      },
+                      child: Container(
+                        // nvA (36324085)
+                        margin: EdgeInsets.fromLTRB(
+                            145 * fem, 0 * fem, 0 * fem, 0 * fem),
+                        width: 68 * fem,
+                        height: 68 * fem,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xfffefdff)),
+                          color: const Color(0x00d9d9d9),
+                          borderRadius: BorderRadius.circular(34 * fem),
+                        ),
+                        child: Center(
+                          // rectangle9aKp (26:109)
+                          child: _isRecording
+                              ? SizedBox(
+                                  width: double.infinity,
+                                  height: 33 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(5 * fem),
+                                      color: const Color(0xffdce670),
+                                    ),
+                                  ),
+                                )
+                              : SizedBox(
+                                  width: double.infinity,
+                                  height: 55 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(27.5 * fem),
+                                      color: _ableRecording
+                                          ? const Color(0xffb92771)
+                                          : const Color(0xff727272),
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                     ),
