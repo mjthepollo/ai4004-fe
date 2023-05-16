@@ -1,5 +1,4 @@
-import 'package:ai4005_fe/presentation/audio_recorder_screen.dart';
-import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
+import 'package:ai4005_fe/presentation/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,9 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AudioRecorderScreen(
-        audioRecorderController: AudioRecorderController(),
-      ),
+      home: const ChatScreen(),
     );
   }
 }
