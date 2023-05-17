@@ -147,10 +147,33 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        // UUE (26:86)
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 70 * fem, 0 * fem, 0 * fem),
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: Text(
+                            '<-',
+                            style: TextStyle(
+                              fontFamily: 'SUITE',
+                              fontSize: 24 * ffem,
+                              fontWeight: FontWeight.w700,
+                              height: 1.2575 * ffem / fem,
+                              color: const Color(0xfffefefd),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     Container(
                       // kYE (20227332)
                       margin: EdgeInsets.fromLTRB(
-                          0 * fem, 80 * fem, 0 * fem, 3 * fem),
+                          0 * fem, 10 * fem, 0 * fem, 3 * fem),
                       width: double.infinity,
                       height: 31 * fem,
                       child: Row(

@@ -25,14 +25,18 @@ class _FriendState extends State<Friend> {
       child: Column(
         children: [
           Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10 * fem),
+            ),
             margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-            width: 106 * fem,
-            height: 106 * fem,
+            width: 120 * fem,
+            height: 120 * fem,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10 * fem),
               child: Image.asset(
                 "assets/images/${widget.image_name}", // Use the image_name property from the widget
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),
