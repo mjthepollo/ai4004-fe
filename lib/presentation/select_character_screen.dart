@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../view_model/audio_recorder_controller.dart';
 import '../widget/friend.dart';
+import '../widget/making.dart';
 
 class SelectCharacterScreen extends StatefulWidget {
   const SelectCharacterScreen({super.key});
@@ -74,17 +75,20 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
             width: 330 * fem,
             height: 330 * fem,
             child: GridView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: friends.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 1.0, // Horizontal spacing
-                mainAxisSpacing: 1.0, // Vertical spacing
-              ),
-              itemBuilder: (BuildContext context, int index) {
-                return friends[index];
-              },
-            ),
+                padding: EdgeInsets.zero,
+                itemCount: friends.length + 1,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 1.0, // Horizontal spacing
+                  mainAxisSpacing: 1.0, // Vertical spacing
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  if (index < friends.length) {
+                    return friends[index];
+                  } else {
+                    return const Making();
+                  }
+                }),
           ),
           SizedBox(
             height: 20 * fem,

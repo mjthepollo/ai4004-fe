@@ -137,182 +137,174 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   )),
             ),
-            Positioned(
-              // qgA (90110535)
-              left: 18 * fem,
-              top: 20 * fem,
-              child: SizedBox(
-                width: baseWidth,
-                height: 3000 * fem,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        // UUE (26:86)
-                        margin: EdgeInsets.fromLTRB(
-                            0 * fem, 70 * fem, 0 * fem, 0 * fem),
-                        child: Material(
-                          type: MaterialType.transparency,
-                          child: Text(
-                            '<-',
-                            style: TextStyle(
-                              fontFamily: 'SUITE',
-                              fontSize: 24 * ffem,
-                              fontWeight: FontWeight.w700,
-                              height: 1.2575 * ffem / fem,
-                              color: const Color(0xfffefefd),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      // kYE (20227332)
+            Container(
+              margin: EdgeInsets.only(left: 18 * fem),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 40 * fem,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      // UUE (26:86)
                       margin: EdgeInsets.fromLTRB(
-                          0 * fem, 10 * fem, 0 * fem, 3 * fem),
-                      width: double.infinity,
-                      height: 31 * fem,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            // UUE (26:86)
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 20 * fem, 0 * fem),
-                            child: Material(
-                              type: MaterialType.transparency,
-                              child: Text(
-                                '귀여운 졸라맨',
-                                style: TextStyle(
-                                  fontFamily: 'SUITE',
-                                  fontSize: 24 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.2575 * ffem / fem,
-                                  color: const Color(0xfffefefd),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            // PLJ (26:87)
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 106 * fem, 0 * fem),
-                            child: Material(
-                              type: MaterialType.transparency,
-                              child: Text(
-                                '>',
-                                style: TextStyle(
-                                  fontFamily: 'SUITE',
-                                  fontSize: 24 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.2575 * ffem / fem,
-                                  color: const Color(0xffffffff),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            // notification1V8S (26:92)
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 8 * fem, 0 * fem),
-                            width: 32 * fem,
-                            height: 32 * fem,
-                            child: Image.asset(
-                              'assets/images/notification-1.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(
-                            // settingBmx (26:90)
-                            width: 31 * fem,
-                            height: 31 * fem,
-                            child: Image.asset(
-                              'assets/images/setting.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      // line1hkJ (26:88)
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 3 * fem),
-                      width: 133 * fem,
-                      height: 2 * fem,
-                      decoration: const BoxDecoration(
-                        color: Color(0xff9f8ab8),
-                      ),
-                    ),
-                    Container(
-                      // SC6 (26:110)
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 95 * fem),
+                          0 * fem, 70 * fem, 0 * fem, 0 * fem),
                       child: Material(
                         type: MaterialType.transparency,
                         child: Text(
-                          '다른 캐릭터와 대화 해보세요',
+                          '<-',
                           style: TextStyle(
                             fontFamily: 'SUITE',
-                            fontSize: 16 * ffem,
+                            fontSize: 24 * ffem,
                             fontWeight: FontWeight.w700,
                             height: 1.2575 * ffem / fem,
-                            color: const Color(0xff977eb4),
+                            color: const Color(0xfffefefd),
                           ),
                         ),
                       ),
                     ),
-                    Container(
-                      // MK4 (89525357)
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 60 * fem),
-                      padding: EdgeInsets.fromLTRB(
-                          17 * fem, 17 * fem, 18 * fem, 17 * fem),
-                      width: 367 * fem,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff5a2f86),
-                        borderRadius: BorderRadius.circular(30 * fem),
-                      ),
-                      child: Center(
-                        // hiphopdancing214UN (25:85)
-                        child: SizedBox(
-                          width: 332 * fem,
-                          height: 332 * fem,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30 * fem),
-                            child: _talkingAI
-                                ? Image.asset(
-                                    'assets/gifs/punching_bag_AdobeExpress.gif',
-                                    fit: BoxFit.cover,
-                                  )
-                                : _ableRecording
-                                    ? Image.asset(
-                                        'assets/gifs/happy_idle_AdobeExpress.gif',
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Image.asset(
-                                        'assets/images/hiphopdancing2-1.png',
-                                        fit: BoxFit.cover,
-                                      ),
+                  ),
+                  Container(
+                    // kYE (20227332)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 10 * fem, 0 * fem, 3 * fem),
+                    width: double.infinity,
+                    height: 31 * fem,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          // UUE (26:86)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 20 * fem, 0 * fem),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Text(
+                              '귀여운 졸라맨',
+                              style: TextStyle(
+                                fontFamily: 'SUITE',
+                                fontSize: 24 * ffem,
+                                fontWeight: FontWeight.w700,
+                                height: 1.2575 * ffem / fem,
+                                color: const Color(0xfffefefd),
+                              ),
+                            ),
                           ),
+                        ),
+                        Container(
+                          // PLJ (26:87)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 106 * fem, 0 * fem),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Text(
+                              '>',
+                              style: TextStyle(
+                                fontFamily: 'SUITE',
+                                fontSize: 24 * ffem,
+                                fontWeight: FontWeight.w700,
+                                height: 1.2575 * ffem / fem,
+                                color: const Color(0xffffffff),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          // notification1V8S (26:92)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 8 * fem, 0 * fem),
+                          width: 32 * fem,
+                          height: 32 * fem,
+                          child: Image.asset(
+                            'assets/images/notification-1.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(
+                          // settingBmx (26:90)
+                          width: 31 * fem,
+                          height: 31 * fem,
+                          child: Image.asset(
+                            'assets/images/setting.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // line1hkJ (26:88)
+                    margin:
+                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 3 * fem),
+                    width: 133 * fem,
+                    height: 2 * fem,
+                    decoration: const BoxDecoration(
+                      color: Color(0xff9f8ab8),
+                    ),
+                  ),
+                  Material(
+                    type: MaterialType.transparency,
+                    child: Text(
+                      '다른 캐릭터와 대화 해보세요',
+                      style: TextStyle(
+                        fontFamily: 'SUITE',
+                        fontSize: 16 * ffem,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2575 * ffem / fem,
+                        color: const Color(0xff977eb4),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 65 * fem),
+                  Container(
+                    // MK4 (89525357)
+                    padding: EdgeInsets.fromLTRB(
+                        17 * fem, 17 * fem, 18 * fem, 17 * fem),
+                    width: 367 * fem,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff5a2f86),
+                      borderRadius: BorderRadius.circular(30 * fem),
+                    ),
+                    child: Center(
+                      // hiphopdancing214UN (25:85)
+                      child: SizedBox(
+                        width: 332 * fem,
+                        height: 332 * fem,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30 * fem),
+                          child: _talkingAI
+                              ? Image.asset(
+                                  'assets/gifs/punching_bag_AdobeExpress.gif',
+                                  fit: BoxFit.cover,
+                                )
+                              : _ableRecording
+                                  ? Image.asset(
+                                      'assets/gifs/happy_idle_AdobeExpress.gif',
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.asset(
+                                      'assets/images/hiphopdancing2-1.png',
+                                      fit: BoxFit.cover,
+                                    ),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        print("hi");
-                        if (_ableRecording) {
-                          _onRecordButtonPressed();
-                        }
-                      },
+                  ),
+                  SizedBox(height: 60 * fem),
+                  GestureDetector(
+                    onTap: () {
+                      print("hi");
+                      if (_ableRecording) {
+                        _onRecordButtonPressed();
+                      }
+                    },
+                    child: Align(
+                      alignment: Alignment.center,
                       child: Container(
-                        // nvA (36324085)
-                        margin: EdgeInsets.fromLTRB(
-                            145 * fem, 0 * fem, 0 * fem, 0 * fem),
                         width: 68 * fem,
                         height: 68 * fem,
                         decoration: BoxDecoration(
@@ -350,8 +342,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

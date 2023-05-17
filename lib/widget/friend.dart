@@ -17,7 +17,7 @@ class Friend extends StatefulWidget {
 }
 
 class _FriendState extends State<Friend> {
-  bool is_selected = true;
+  bool is_selected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,69 +29,76 @@ class _FriendState extends State<Friend> {
           SizedBox(
             width: 120 * fem,
             height: 120 * fem,
-            child: Stack(children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() {
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (widget.is_made) {
                     is_selected = !is_selected;
-                  });
-                },
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10 * fem),
-                      ),
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                      width: 120 * fem,
-                      height: 120 * fem,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10 * fem),
-                        child: Image.asset(
-                          "assets/images/${widget.image_name}", // Use the image_name property from the widget
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ),
+                  }
+                });
+              },
+              child: Stack(children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10 * fem),
+                  ),
+                  margin:
+                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                  width: 120 * fem,
+                  height: 120 * fem,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10 * fem),
+                    child: Image.asset(
+                      "assets/images/${widget.image_name}", // Use the image_name property from the widget
+                      fit: BoxFit.fitHeight,
                     ),
-                    Center(
-                        child: Opacity(
-                            opacity: widget.is_made ? 0 : 0.7,
-                            child: Container(
-                              width: 110 * fem,
-                              height: 110 * fem,
-                              color: Colors.black,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  '생성중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: 'SUITE',
-                                    fontSize: 30 * fem,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.yellow,
-                                  ),
-                                ),
-                              ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Opacity(
+                        opacity: is_selected ? 1 : 0,
+                        child: Container(
+                            width: 30 * fem,
+                            height: 30 * fem,
+                            decoration: const BoxDecoration(
+                              color: Colors.purple,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              "assets/images/check-1.png",
+                              fit: BoxFit.fitWidth,
                             ))),
+                    SizedBox(
+                      width: 2 * fem,
+                    ),
                   ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Icon(
-                    Icons.check_circle,
-                    color: is_selected ? Colors.green : Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 2 * fem,
-                  ),
-                ],
-              )
-            ]),
+                Center(
+                    child: Opacity(
+                        opacity: widget.is_made ? 0 : 0.7,
+                        child: Container(
+                          width: 110 * fem,
+                          height: 110 * fem,
+                          color: Colors.black,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              '생성중',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'SUITE',
+                                fontSize: 30 * fem,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.yellow,
+                              ),
+                            ),
+                          ),
+                        ))),
+              ]),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -110,7 +117,7 @@ class _FriendState extends State<Friend> {
                         fontSize: 15 * fem,
                         fontWeight: FontWeight.w700,
                         height: 2.3 / fem, // Divide by fem instead of ffem
-                        color: const Color(0xfffefefd),
+                        color: const Color(0xffe5c6f1),
                       ),
                     ),
                   ),
