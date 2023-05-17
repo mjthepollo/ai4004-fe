@@ -14,13 +14,20 @@ class SelectCharacterScreen extends StatefulWidget {
 class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
   final List<Friend> friends = [
     const Friend(
-        image_name: 'cleanshot-2023-05-16-at-0343-1.png', friend_name: '친구'),
+      image_name: 'cleanshot-2023-05-16-at-0343-1.png',
+      friend_name: '귀여운 노랑이',
+      is_made: true,
+    ),
     const Friend(
-        image_name: 'cleanshot-2023-05-16-at-0344-1.png', friend_name: '도라에몽'),
+      image_name: 'mainchar..png',
+      friend_name: '귀여운 졸라맨',
+      is_made: true,
+    ),
     const Friend(
-        image_name: 'cleanshot-2023-05-16-at-0345-1-bg.png',
-        friend_name: '근육 짱짱맨'),
-    const Friend(image_name: 'mainchar..png', friend_name: '귀여운 졸라맨'),
+      image_name: 'cleanshot-2023-05-16-at-0345-1-bg.png',
+      friend_name: '근육 짱짱맨',
+      is_made: false,
+    ),
   ];
 
   @override

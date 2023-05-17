@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class Friend extends StatefulWidget {
   final String image_name;
   final String friend_name;
+  final bool is_made;
 
   const Friend({
     required this.image_name,
     required this.friend_name,
+    required this.is_made,
     Key? key,
   }) : super(key: key);
 
@@ -15,7 +17,7 @@ class Friend extends StatefulWidget {
 }
 
 class _FriendState extends State<Friend> {
-  bool is_selected = false;
+  bool is_selected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +26,72 @@ class _FriendState extends State<Friend> {
     return Container(
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10 * fem),
-            ),
-            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+          SizedBox(
             width: 120 * fem,
             height: 120 * fem,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10 * fem),
-              child: Image.asset(
-                "assets/images/${widget.image_name}", // Use the image_name property from the widget
-                fit: BoxFit.fitHeight,
+            child: Stack(children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    is_selected = !is_selected;
+                  });
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10 * fem),
+                      ),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                      width: 120 * fem,
+                      height: 120 * fem,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10 * fem),
+                        child: Image.asset(
+                          "assets/images/${widget.image_name}", // Use the image_name property from the widget
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                    Center(
+                        child: Opacity(
+                            opacity: widget.is_made ? 0 : 0.7,
+                            child: Container(
+                              width: 110 * fem,
+                              height: 110 * fem,
+                              color: Colors.black,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  '생성중',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'SUITE',
+                                    fontSize: 30 * fem,
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.yellow,
+                                  ),
+                                ),
+                              ),
+                            ))),
+                  ],
+                ),
               ),
-            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Icon(
+                    Icons.check_circle,
+                    color: is_selected ? Colors.green : Colors.grey,
+                  ),
+                  SizedBox(
+                    width: 2 * fem,
+                  ),
+                ],
+              )
+            ]),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
