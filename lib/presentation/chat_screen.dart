@@ -2,8 +2,6 @@ import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-import '../util/util.dart';
-
 class ChatScreen extends StatefulWidget {
   final AudioRecorderController audioRecorderController;
   const ChatScreen({
@@ -166,8 +164,8 @@ class _ChatScreenState extends State<ChatScreen> {
                               type: MaterialType.transparency,
                               child: Text(
                                 '귀여운 졸라맨',
-                                style: SafeGoogleFont(
-                                  'SUITE',
+                                style: TextStyle(
+                                  fontFamily: 'SUITE',
                                   fontSize: 24 * ffem,
                                   fontWeight: FontWeight.w700,
                                   height: 1.2575 * ffem / fem,
@@ -184,8 +182,8 @@ class _ChatScreenState extends State<ChatScreen> {
                               type: MaterialType.transparency,
                               child: Text(
                                 '>',
-                                style: SafeGoogleFont(
-                                  'SUITE',
+                                style: TextStyle(
+                                  fontFamily: 'SUITE',
                                   fontSize: 24 * ffem,
                                   fontWeight: FontWeight.w700,
                                   height: 1.2575 * ffem / fem,
@@ -235,8 +233,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         type: MaterialType.transparency,
                         child: Text(
                           '다른 캐릭터와 대화 해보세요',
-                          style: SafeGoogleFont(
-                            'SUITE',
+                          style: TextStyle(
+                            fontFamily: 'SUITE',
                             fontSize: 16 * ffem,
                             fontWeight: FontWeight.w700,
                             height: 1.2575 * ffem / fem,
