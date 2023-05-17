@@ -92,6 +92,10 @@ flutter:
     - assets/images/cleanshot-2023-05-16-at-0344-1.png
     - assets/images/hiphopdancing2-1.png
     - assets/images/hiphopdancing2-1-xvS.png
+    - assets/images/mainchar..png
+    - assets/gifs/happy_idle_AdobeExpress.gif
+    - assets/gifs/punching_bag_AdobeExpress.gif
+    - assets/images/adding.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
