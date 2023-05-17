@@ -1,5 +1,4 @@
-import 'package:ai4005_fe/presentation/chat_screen.dart';
-import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
+import 'package:ai4005_fe/presentation/select_character_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,9 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xff411972),
+        fontFamily: 'SUITE',
         primarySwatch: Colors.blue,
       ),
-      home: ChatScreen(audioRecorderController: AudioRecorderController()),
+      home: const SelectCharacterScreen(),
+      //home: ChatScreen(audioRecorderController: AudioRecorderController()),
     );
   }
 }
