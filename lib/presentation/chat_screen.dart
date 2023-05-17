@@ -261,10 +261,20 @@ class _ChatScreenState extends State<ChatScreen> {
                           height: 332 * fem,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30 * fem),
-                            child: Image.asset(
-                              'assets/images/hiphopdancing2-1.png',
-                              fit: BoxFit.cover,
-                            ),
+                            child: _talkingAI
+                                ? Image.asset(
+                                    'assets/gifs/punching_bag_AdobeExpress.gif',
+                                    fit: BoxFit.cover,
+                                  )
+                                : _ableRecording
+                                    ? Image.asset(
+                                        'assets/gifs/happy_idle_AdobeExpress.gif',
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.asset(
+                                        'assets/images/hiphopdancing2-1.png',
+                                        fit: BoxFit.cover,
+                                      ),
                           ),
                         ),
                       ),

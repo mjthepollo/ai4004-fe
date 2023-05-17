@@ -21,17 +21,15 @@ class _FriendState extends State<Friend> {
   Widget build(BuildContext context) {
     double baseWidth = 393;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    return SizedBox(
-      width: 10 * fem,
-      height: 150 * fem,
+    return Container(
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 5 * fem),
+            margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
             width: 106 * fem,
             height: 106 * fem,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(30 * fem),
+              borderRadius: BorderRadius.circular(10 * fem),
               child: Image.asset(
                 "assets/images/${widget.image_name}", // Use the image_name property from the widget
                 fit: BoxFit.cover,
@@ -39,22 +37,24 @@ class _FriendState extends State<Friend> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Text(
-                    widget
-                        .friend_name, // Use the friend_name property from the widget
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'SUITE',
-                      fontSize: 20 * fem,
-                      fontWeight: FontWeight.w700,
-                      height: 2.3 / fem, // Divide by fem instead of ffem
-                      color: const Color(0xfffefefd),
+              SizedBox(width: 15 * fem),
+              Expanded(
+                child: Center(
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: Text(
+                      widget
+                          .friend_name, // Use the friend_name property from the widget
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'SUITE',
+                        fontSize: 15 * fem,
+                        fontWeight: FontWeight.w700,
+                        height: 2.3 / fem, // Divide by fem instead of ffem
+                        color: const Color(0xfffefefd),
+                      ),
                     ),
                   ),
                 ),
@@ -67,8 +67,9 @@ class _FriendState extends State<Friend> {
                   });
                 },
                 child: Container(
-                  width: 26,
-                  height: 26,
+                  width: 15 * fem,
+                  height: 15 * fem,
+                  margin: EdgeInsets.only(right: 1 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/delete.png'),
@@ -84,8 +85,9 @@ class _FriendState extends State<Friend> {
                   });
                 },
                 child: Container(
-                  width: 26,
-                  height: 26,
+                  width: 15 * fem,
+                  height: 15 * fem,
+                  margin: EdgeInsets.only(right: 25 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/edit.png'),

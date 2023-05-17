@@ -44,9 +44,8 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               // download31NJa (26:127)
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 17 * fem),
               width: 139 * fem,
               height: 106 * fem,
               child: Image.asset(
@@ -54,114 +53,30 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-            Container(
-              // rzS (26:128)
-              margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 20 * fem),
-              child: Material(
-                type: MaterialType.transparency,
-                child: Text(
-                  '나의 캐릭터',
-                  style: TextStyle(
-                    fontFamily: 'SUITE',
-                    fontSize: 32 * ffem,
-                    fontWeight: FontWeight.w700,
-                    height: 1.2575 * ffem / fem,
-                    color: const Color(0xfffefefd),
-                  ),
+            SizedBox(
+              height: 17 * fem,
+            ),
+            Material(
+              type: MaterialType.transparency,
+              child: Text(
+                '나의 캐릭터',
+                style: TextStyle(
+                  fontFamily: 'SUITE',
+                  fontSize: 32 * ffem,
+                  fontWeight: FontWeight.w700,
+                  height: 1.2575 * ffem / fem,
+                  color: const Color(0xfffefefd),
                 ),
               ),
             ),
-            // SizedBox(
-            //   width: 176,
-            //   height: 176,
-            //   child: Stack(
-            //     children: <Widget>[
-            //       Container(
-            //         width: 128,
-            //         height: 128,
-            //         decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(15),
-            //           image: const DecorationImage(
-            //             image: AssetImage(
-            //                 'assets/images/cleanshot-2023-05-16-at-03431.png'),
-            //             fit: BoxFit.fitWidth,
-            //           ),
-            //         ),
-            //       ),
-            //       Container(
-            //         margin: const EdgeInsets.only(top: 151, left: 1),
-            //         width: 175,
-            //         height: 25,
-            //         child: Stack(
-            //           children: <Widget>[
-            //             const Text(
-            //               '노란색 귀요미',
-            //               textAlign: TextAlign.left,
-            //               style: TextStyle(
-            //                 color: Color.fromRGBO(229, 198, 241, 1),
-            //                 fontFamily: 'SUITE',
-            //                 fontSize: 16,
-            //                 letterSpacing: 0,
-            //                 fontWeight: FontWeight.normal,
-            //                 height: 1,
-            //               ),
-            //             ),
-            //             Container(
-            //               margin: const EdgeInsets.only(left: 95, top: 4),
-            //               width: 11,
-            //               height: 14,
-            //               decoration: const BoxDecoration(
-            //                 image: DecorationImage(
-            //                   image: AssetImage('assets/images/delete.png'),
-            //                   fit: BoxFit.fitWidth,
-            //                 ),
-            //               ),
-            //             ),
-            //             Container(
-            //               margin: const EdgeInsets.only(left: 110, top: 5),
-            //               width: 13,
-            //               height: 13,
-            //               decoration: const BoxDecoration(
-            //                 image: DecorationImage(
-            //                   image: AssetImage('assets/images/edit.png'),
-            //                   fit: BoxFit.fitWidth,
-            //                 ),
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //       Container(
-            //         margin: const EdgeInsets.only(top: 0, left: 106),
-            //         width: 41,
-            //         height: 41,
-            //         decoration: BoxDecoration(
-            //           color: const Color.fromRGBO(97, 65, 142, 1),
-            //           border: Border.all(
-            //             color: const Color.fromRGBO(82, 47, 129, 1),
-            //             width: 3,
-            //           ),
-            //           borderRadius:
-            //               const BorderRadius.all(Radius.elliptical(41, 41)),
-            //         ),
-            //       ),
-            //       Container(
-            //         margin: const EdgeInsets.only(top: 10, left: 114),
-            //         width: 26,
-            //         height: 26,
-            //         decoration: const BoxDecoration(
-            //           image: DecorationImage(
-            //             image: AssetImage('assets/images/check-1.png'),
-            //             fit: BoxFit.fitWidth,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             SizedBox(
-              height: 450 * fem,
+              height: 40 * fem,
+            ),
+            SizedBox(
+              width: 330 * fem,
+              height: 330 * fem,
               child: GridView.builder(
+                padding: EdgeInsets.zero,
                 itemCount: friends.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -172,6 +87,9 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                   return friends[index];
                 },
               ),
+            ),
+            SizedBox(
+              height: 20 * fem,
             ),
             GestureDetector(
               onTap: () {

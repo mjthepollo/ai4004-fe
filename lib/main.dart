@@ -1,5 +1,6 @@
-import 'package:ai4005_fe/presentation/select_character_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'presentation/select_character_screen.dart';
 
 void main() {
   runApp(const MyApp());
