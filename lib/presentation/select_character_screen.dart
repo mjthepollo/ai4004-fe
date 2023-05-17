@@ -20,6 +20,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
     const Friend(
         image_name: 'cleanshot-2023-05-16-at-0345-1-bg.png',
         friend_name: '근육 짱짱맨'),
+    const Friend(image_name: 'mainchar..png', friend_name: '귀여운 졸라맨'),
   ];
 
   @override

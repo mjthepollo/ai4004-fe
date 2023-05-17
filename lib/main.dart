@@ -11,14 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xff411972),
-        fontFamily: 'SUITE',
-        primarySwatch: Colors.blue,
-      ),
-      home: const SelectCharacterScreen(),
-      //home: ChatScreen(audioRecorderController: AudioRecorderController()),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xff411972),
+        ),
+        home: const Scaffold(
+          //body: TestScreen(),
+          //body: ChatScreen(audioRecorderController: AudioRecorderController()),
+          body: SelectCharacterScreen(),
+        )
+        //home: ChatScreen(audioRecorderController: AudioRecorderController()),
+        );
   }
 }
