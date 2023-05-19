@@ -1,3 +1,4 @@
+import 'package:ai4005_fe/presentation/invitation_screen.dart';
 import 'package:flutter/material.dart';
 
 class Create extends StatelessWidget {
@@ -9,7 +10,10 @@ class Create extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     return GestureDetector(
       onTap: () {
-        print("really");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: ((context) => const InvitationScreen())));
       },
       child: SizedBox(
         width: 10 * fem,

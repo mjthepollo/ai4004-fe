@@ -1,4 +1,5 @@
 import 'package:ai4005_fe/presentation/login_screen.dart';
+import 'package:ai4005_fe/presentation/select_character_screen.dart';
 import 'package:ai4005_fe/util/color.dart';
 import 'package:ai4005_fe/widget/text_field_input.dart';
 import 'package:flutter/material.dart';
@@ -108,10 +109,18 @@ class _SignupScreenState extends State<SignupScreen> {
             SizedBox(
               height: 40 * fem,
             ),
-            Button(
-              width: 120 * fem,
-              text: '회원가입',
-            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const SelectCharacterScreen())));
+              },
+              child: Button(
+                width: 120 * fem,
+                text: '회원가입',
+              ),
+            )
           ],
         ),
       ),
