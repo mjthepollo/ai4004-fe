@@ -1,3 +1,4 @@
+import 'package:ai4005_fe/presentation/select_character_screen.dart';
 import 'package:ai4005_fe/presentation/signup_screen.dart';
 import 'package:ai4005_fe/util/color.dart';
 import 'package:ai4005_fe/widget/text_field_input.dart';
@@ -96,21 +97,29 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 40 * fem,
             ),
-            Container(
-              width: 120 * fem,
-              height: 54 * fem,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100 * fem),
-                color: buttonColor,
-              ),
-              child: Center(
-                child: Text(
-                  "로그인",
-                  style: TextStyle(
-                    fontFamily: 'SUITE',
-                    fontSize: 20 * ffem,
-                    fontWeight: FontWeight.w700,
-                    color: buttonTextColor,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const SelectCharacterScreen())));
+              },
+              child: Container(
+                width: 120 * fem,
+                height: 54 * fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100 * fem),
+                  color: buttonColor,
+                ),
+                child: Center(
+                  child: Text(
+                    "로그인",
+                    style: TextStyle(
+                      fontFamily: 'SUITE',
+                      fontSize: 20 * ffem,
+                      fontWeight: FontWeight.w700,
+                      color: buttonTextColor,
+                    ),
                   ),
                 ),
               ),
