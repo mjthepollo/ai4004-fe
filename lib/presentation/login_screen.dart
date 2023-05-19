@@ -4,6 +4,8 @@ import 'package:ai4005_fe/util/color.dart';
 import 'package:ai4005_fe/widget/text_field_input.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/button.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -104,24 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     MaterialPageRoute(
                         builder: ((context) => const SelectCharacterScreen())));
               },
-              child: Container(
+              child: Button(
                 width: 120 * fem,
-                height: 54 * fem,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100 * fem),
-                  color: buttonColor,
-                ),
-                child: Center(
-                  child: Text(
-                    "로그인",
-                    style: TextStyle(
-                      fontFamily: 'SUITE',
-                      fontSize: 20 * ffem,
-                      fontWeight: FontWeight.w700,
-                      color: buttonTextColor,
-                    ),
-                  ),
-                ),
+                text: '로그인',
               ),
             )
           ],
