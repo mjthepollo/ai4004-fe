@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../util/color.dart';
+
 class Friend extends StatefulWidget {
   final String image_name;
   final String friend_name;
@@ -117,7 +119,7 @@ class _FriendState extends State<Friend> {
                         fontSize: 15 * fem,
                         fontWeight: FontWeight.w700,
                         height: 2.3 / fem, // Divide by fem instead of ffem
-                        color: const Color(0xffe5c6f1),
+                        color: friendTextColor,
                       ),
                     ),
                   ),

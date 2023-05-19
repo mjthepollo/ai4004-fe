@@ -2,6 +2,8 @@ import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
+import '../util/color.dart';
+
 class ChatScreen extends StatefulWidget {
   final AudioRecorderController audioRecorderController;
   const ChatScreen({
@@ -190,7 +192,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 fontSize: 24 * ffem,
                                 fontWeight: FontWeight.w700,
                                 height: 1.2575 * ffem / fem,
-                                color: const Color(0xfffefefd),
+                                color: mainTextColor,
                               ),
                             ),
                           ),
@@ -208,7 +210,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 fontSize: 24 * ffem,
                                 fontWeight: FontWeight.w700,
                                 height: 1.2575 * ffem / fem,
-                                color: const Color(0xffffffff),
+                                color: mainTextColor,
                               ),
                             ),
                           ),
@@ -243,7 +245,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 133 * fem,
                     height: 2 * fem,
                     decoration: const BoxDecoration(
-                      color: Color(0xff9f8ab8),
+                      color: subTextColor,
                     ),
                   ),
                   Material(
@@ -255,7 +257,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         fontSize: 16 * ffem,
                         fontWeight: FontWeight.w700,
                         height: 1.2575 * ffem / fem,
-                        color: const Color(0xff977eb4),
+                        color: subTextColor,
                       ),
                     ),
                   ),

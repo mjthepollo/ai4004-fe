@@ -1,9 +1,10 @@
 import 'package:ai4005_fe/presentation/chat_screen.dart';
+import 'package:ai4005_fe/util/color.dart';
 import 'package:flutter/material.dart';
 
 import '../view_model/audio_recorder_controller.dart';
+import '../widget/create.dart';
 import '../widget/friend.dart';
-import '../widget/making.dart';
 
 class SelectCharacterScreen extends StatefulWidget {
   const SelectCharacterScreen({super.key});
@@ -64,7 +65,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                 fontSize: 32 * ffem,
                 fontWeight: FontWeight.w700,
                 height: 1.2575 * ffem / fem,
-                color: const Color(0xfffefefd),
+                color: mainTextColor,
               ),
             ),
           ),
@@ -86,7 +87,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                   if (index < friends.length) {
                     return friends[index];
                   } else {
-                    return const Making();
+                    return const Create();
                   }
                 }),
           ),
@@ -107,7 +108,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
               width: baseWidth * 7 / 8,
               height: 58 * fem,
               decoration: BoxDecoration(
-                color: const Color(0xffdce670),
+                color: buttonColor,
                 borderRadius: BorderRadius.circular(100 * fem),
               ),
               child: Align(
@@ -122,7 +123,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w700,
                       height: 2.3 * ffem / fem,
-                      color: const Color(0xff411972),
+                      color: buttonTextColor,
                     ),
                   ),
                 ),
