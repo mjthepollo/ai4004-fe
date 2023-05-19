@@ -3,6 +3,7 @@ import 'package:ai4005_fe/util/color.dart';
 import 'package:flutter/material.dart';
 
 import '../view_model/audio_recorder_controller.dart';
+import '../widget/button.dart';
 import '../widget/create.dart';
 import '../widget/friend.dart';
 
@@ -96,41 +97,18 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
               height: 20 * fem,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChatScreen(
-                          audioRecorderController: AudioRecorderController()),
-                    ));
-              },
-              child: Container(
-                // autogroupc5bt9dQ (HgUdjMACuDhonZSS6mc5bt)
-                width: baseWidth * 7 / 8,
-                height: 58 * fem,
-                decoration: BoxDecoration(
-                  color: buttonColor,
-                  borderRadius: BorderRadius.circular(100 * fem),
-                ),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Material(
-                    type: MaterialType.transparency,
-                    child: Text(
-                      '선택 완료\n\n',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'SUITE',
-                        fontSize: 20 * ffem,
-                        fontWeight: FontWeight.w700,
-                        height: 2.3 * ffem / fem,
-                        color: buttonTextColor,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen(
+                            audioRecorderController: AudioRecorderController()),
+                      ));
+                },
+                child: Button(
+                  width: baseWidth * 7 / 8,
+                  text: '선택 완료',
+                )),
           ],
         ),
       ),
