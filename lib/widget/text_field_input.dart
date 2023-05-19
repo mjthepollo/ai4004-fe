@@ -51,9 +51,15 @@ class TextFieldInput extends StatelessWidget {
             width: 5 * fem,
           ),
           Flexible(
-            flex: 4,
+            flex: 3,
             child: TextField(
               controller: textEditingController,
+              style: TextStyle(
+                fontFamily: 'SUITE',
+                fontSize: 16 * ffem,
+                fontWeight: FontWeight.w700,
+                color: subTextColor,
+              ),
               decoration: InputDecoration(
                 hintText: hintText,
                 hintStyle: TextStyle(

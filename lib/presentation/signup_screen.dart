@@ -1,16 +1,17 @@
-import 'package:ai4005_fe/presentation/signup_screen.dart';
+import 'package:ai4005_fe/presentation/login_screen.dart';
 import 'package:ai4005_fe/util/color.dart';
 import 'package:ai4005_fe/widget/text_field_input.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 209 * fem,
             ),
             Text(
-              "로그인",
+              "가입하기",
               style: TextStyle(
                 fontFamily: 'SUITE',
                 color: mainTextColor,
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "계정이 없으신가요?",
+                  "이미 사용중인가요?",
                   style: TextStyle(
                     fontFamily: 'SUITE',
                     color: subTextColor,
@@ -60,10 +61,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: ((context) => const SignupScreen())));
+                            builder: ((context) => const LoginScreen())));
                   },
                   child: Text(
-                    "회원가입",
+                    "로그인",
                     style: TextStyle(
                       fontFamily: 'SUITE',
                       color: interactiveTextColor,
@@ -79,9 +80,18 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
+              imageText: 'assets/images/user.png',
+              textEditingController: _usernameController,
+              hintText: '김긍정',
+              textInputType: TextInputType.text,
+            ),
+            SizedBox(
+              height: 20 * fem,
+            ),
+            TextFieldInput(
               imageText: 'assets/images/mail.png',
               textEditingController: _emailController,
-              hintText: '이메일',
+              hintText: 'smile@gmail.com',
               textInputType: TextInputType.emailAddress,
             ),
             SizedBox(
@@ -91,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
               imageText: 'assets/images/lock.png',
               textEditingController: _passwordController,
               hintText: '비밀번호',
-              textInputType: TextInputType.emailAddress,
+              textInputType: TextInputType.text,
             ),
             SizedBox(
               height: 40 * fem,
@@ -105,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               child: Center(
                 child: Text(
-                  "로그인",
+                  "회원가입",
                   style: TextStyle(
                     fontFamily: 'SUITE',
                     fontSize: 20 * ffem,
