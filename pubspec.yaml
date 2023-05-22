@@ -60,6 +60,8 @@ flutter:
     - assets/images/icons/lock.png
     - assets/images/icons/mail.png
     - assets/images/icons/user.png
+    - assets/images/icons/edit.png
+    - assets/images/icons/delete.png
     - assets/images/icons/adding.png
     - assets/images/icons/checkmark.png
     - assets/images/icons/notification.png

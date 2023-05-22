@@ -138,7 +138,7 @@ class _FriendState extends State<Friend> {
                   margin: EdgeInsets.only(right: 1 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/delete.png'),
+                      image: AssetImage('assets/images/icons/delete.png'),
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -156,7 +156,7 @@ class _FriendState extends State<Friend> {
                   margin: EdgeInsets.only(right: 25 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/edit.png'),
+                      image: AssetImage('assets/images/icons/edit.png'),
                       fit: BoxFit.fitWidth,
                     ),
                   ),
