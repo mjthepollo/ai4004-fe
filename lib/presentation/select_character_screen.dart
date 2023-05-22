@@ -1,11 +1,11 @@
 import 'package:ai4005_fe/presentation/chat_screen.dart';
 import 'package:ai4005_fe/util/color.dart';
+import 'package:ai4005_fe/widget/friend.dart';
 import 'package:flutter/material.dart';
 
 import '../view_model/audio_recorder_controller.dart';
 import '../widget/button.dart';
 import '../widget/create.dart';
-import '../widget/friend.dart';
 
 class SelectCharacterScreen extends StatefulWidget {
   const SelectCharacterScreen({super.key});
@@ -15,22 +15,23 @@ class SelectCharacterScreen extends StatefulWidget {
 }
 
 class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
-  final List<Friend> friends = [
-    const Friend(
-      image_name: 'cleanshot-2023-05-16-at-0343-1.png',
-      friend_name: '귀여운 노랑이',
-      is_made: true,
-    ),
-    const Friend(
-      image_name: 'mainchar..png',
-      friend_name: '귀여운 졸라맨',
-      is_made: true,
-    ),
-    const Friend(
-      image_name: 'cleanshot-2023-05-16-at-0345-1-bg.png',
-      friend_name: '근육 짱짱맨',
-      is_made: false,
-    ),
+  int selected_index = -1;
+  final List<Map> friends = [
+    const {
+      'image_name': 'temp_yellow.png',
+      'friend_name': '귀여운 노랑이',
+      'is_made': true,
+    },
+    const {
+      'image_name': 'temp_main.png',
+      'friend_name': '귀여운 졸라맨',
+      'is_made': true,
+    },
+    const {
+      'image_name': 'temp_muscle.png',
+      'friend_name': '근육 짱짱맨',
+      'is_made': false,
+    },
   ];
 
   @override
@@ -51,7 +52,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
               width: 139 * fem,
               height: 106 * fem,
               child: Image.asset(
-                'assets/images/download-3-1.png',
+                'assets/images/characters/select_character.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -87,7 +88,21 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     if (index < friends.length) {
-                      return friends[index];
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (friends[index]['is_made'] == true) {
+                              selected_index = index;
+                            }
+                          });
+                        },
+                        child: Friend(
+                          is_selected: index == selected_index ? true : false,
+                          image_name: friends[index]['image_name'],
+                          friend_name: friends[index]['friend_name'],
+                          is_made: friends[index]['is_made'],
+                        ),
+                      );
                     } else {
                       return const Create();
                     }

@@ -19,7 +19,7 @@ class FirstScreen extends StatelessWidget {
           child: SizedBox(
             height: 39 * fem,
             child: Image.asset(
-              "assets/images/download-1.png",
+              "assets/images/logo.png",
               fit: BoxFit.cover,
             ),
           ),

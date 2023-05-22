@@ -6,11 +6,13 @@ class Friend extends StatefulWidget {
   final String image_name;
   final String friend_name;
   final bool is_made;
+  final bool is_selected;
 
   const Friend({
     required this.image_name,
     required this.friend_name,
     required this.is_made,
+    required this.is_selected,
     Key? key,
   }) : super(key: key);
 
@@ -19,8 +21,6 @@ class Friend extends StatefulWidget {
 }
 
 class _FriendState extends State<Friend> {
-  bool is_selected = false;
-
   @override
   Widget build(BuildContext context) {
     double baseWidth = 393;
@@ -31,76 +31,77 @@ class _FriendState extends State<Friend> {
           SizedBox(
             width: 120 * fem,
             height: 120 * fem,
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  if (widget.is_made) {
-                    is_selected = !is_selected;
-                  }
-                });
-              },
-              child: Stack(children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10 * fem),
-                  ),
-                  margin:
-                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                  width: 120 * fem,
-                  height: 120 * fem,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10 * fem),
-                    child: Image.asset(
-                      "assets/images/${widget.image_name}", // Use the image_name property from the widget
-                      fit: BoxFit.fitHeight,
-                    ),
+            child: Stack(children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10 * fem),
+                ),
+                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                width: 120 * fem,
+                height: 120 * fem,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10 * fem),
+                  child: Image.asset(
+                    "assets/images/char_img/${widget.image_name}", // Use the image_name property from the widget
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Opacity(
-                        opacity: is_selected ? 1 : 0,
-                        child: Container(
-                            width: 30 * fem,
-                            height: 30 * fem,
-                            decoration: const BoxDecoration(
-                              color: Colors.purple,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.asset(
-                              "assets/images/check-1.png",
-                              fit: BoxFit.fitWidth,
-                            ))),
-                    SizedBox(
-                      width: 2 * fem,
-                    ),
-                  ],
-                ),
-                Center(
-                    child: Opacity(
-                        opacity: widget.is_made ? 0 : 0.7,
-                        child: Container(
-                          width: 110 * fem,
-                          height: 110 * fem,
-                          color: Colors.black,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '생성중',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'SUITE',
-                                fontSize: 30 * fem,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.yellow,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Opacity(
+                      opacity: widget.is_selected ? 1 : 0,
+                      child: Transform.scale(
+                        scale: 1.2,
+                        child: Transform.translate(
+                          offset: const Offset(10, -10),
+                          child: Container(
+                              width: 30 * fem,
+                              height: 30 * fem,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff61418e),
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: const Color(0xff522f81), width: 3),
                               ),
+                              child: Transform.translate(
+                                offset: const Offset(0, 3),
+                                child: Image.asset(
+                                  "assets/images/icons/checkmark.png",
+                                  width: 1 * fem,
+                                ),
+                              )),
+                        ),
+                      )),
+                  SizedBox(
+                    width: 2 * fem,
+                  ),
+                ],
+              ),
+              Center(
+                  child: Opacity(
+                      opacity: widget.is_made ? 0 : 0.7,
+                      child: Container(
+                        width: 110 * fem,
+                        height: 110 * fem,
+                        color: Colors.black,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            '생성중',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'SUITE',
+                              fontSize: 30 * fem,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.yellow,
                             ),
                           ),
-                        ))),
-              ]),
-            ),
+                        ),
+                      ))),
+            ]),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -128,8 +129,7 @@ class _FriendState extends State<Friend> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    is_selected = !is_selected;
-                    print("really");
+                    print('delete');
                   });
                 },
                 child: Container(
@@ -138,7 +138,7 @@ class _FriendState extends State<Friend> {
                   margin: EdgeInsets.only(right: 1 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/delete.png'),
+                      image: AssetImage('assets/images/icons/delete.png'),
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -156,7 +156,7 @@ class _FriendState extends State<Friend> {
                   margin: EdgeInsets.only(right: 25 * fem),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/edit.png'),
+                      image: AssetImage('assets/images/icons/edit.png'),
                       fit: BoxFit.fitWidth,
                     ),
                   ),
