@@ -53,17 +53,28 @@ class _FriendState extends State<Friend> {
                 children: [
                   Opacity(
                       opacity: widget.is_selected ? 1 : 0,
-                      child: Container(
-                          width: 30 * fem,
-                          height: 30 * fem,
-                          decoration: const BoxDecoration(
-                            color: Colors.purple,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.asset(
-                            "assets/images/check-1.png",
-                            fit: BoxFit.fitWidth,
-                          ))),
+                      child: Transform.scale(
+                        scale: 1.2,
+                        child: Transform.translate(
+                          offset: const Offset(10, -10),
+                          child: Container(
+                              width: 30 * fem,
+                              height: 30 * fem,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff61418e),
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: const Color(0xff522f81), width: 3),
+                              ),
+                              child: Transform.translate(
+                                offset: const Offset(0, 3),
+                                child: Image.asset(
+                                  "assets/images/check-1.png",
+                                  width: 1 * fem,
+                                ),
+                              )),
+                        ),
+                      )),
                   SizedBox(
                     width: 2 * fem,
                   ),
