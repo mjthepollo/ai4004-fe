@@ -23,14 +23,17 @@ class Create extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 18 * fem,
+              height: 5 * fem,
             ),
-            SizedBox(
-                height: 105 * fem,
-                child: Image.asset(
-                  'assets/images/adding.png',
-                  fit: BoxFit.fitHeight,
-                )),
+            Transform.translate(
+              offset: Offset(-3 * fem, 0),
+              child: SizedBox(
+                  height: 115 * fem,
+                  child: Image.asset(
+                    'assets/images/icons/adding.png',
+                    fit: BoxFit.fitHeight,
+                  )),
+            ),
           ],
         ),
       ),

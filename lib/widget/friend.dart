@@ -43,7 +43,7 @@ class _FriendState extends State<Friend> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10 * fem),
                   child: Image.asset(
-                    "assets/images/${widget.image_name}", // Use the image_name property from the widget
+                    "assets/images/char_img/${widget.image_name}", // Use the image_name property from the widget
                     fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -69,7 +69,7 @@ class _FriendState extends State<Friend> {
                               child: Transform.translate(
                                 offset: const Offset(0, 3),
                                 child: Image.asset(
-                                  "assets/images/check-1.png",
+                                  "assets/images/icons/checkmark.png",
                                   width: 1 * fem,
                                 ),
                               )),

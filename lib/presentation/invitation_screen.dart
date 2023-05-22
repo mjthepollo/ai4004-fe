@@ -33,7 +33,7 @@ class _InvitationScreenState extends State<InvitationScreen> {
               SizedBox(
                 width: 176 * fem,
                 child: Image.asset(
-                  "assets/images/download-4-1.png",
+                  "assets/images/characters/invitation.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -86,7 +86,7 @@ class _InvitationScreenState extends State<InvitationScreen> {
                 textEditingController: _newUsernameController,
                 hintText: "새로운 친구의 이름",
                 textInputType: TextInputType.text,
-                imageText: 'assets/images/user.png',
+                imageText: 'assets/images/icons/user.png',
               ),
               SizedBox(
                 height: 140 * fem,

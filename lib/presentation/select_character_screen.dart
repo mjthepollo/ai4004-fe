@@ -18,17 +18,17 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
   int selected_index = -1;
   final List<Map> friends = [
     const {
-      'image_name': 'cleanshot-2023-05-16-at-0343-1.png',
+      'image_name': 'temp_yellow.png',
       'friend_name': '귀여운 노랑이',
       'is_made': true,
     },
     const {
-      'image_name': 'mainchar..png',
+      'image_name': 'temp_main.png',
       'friend_name': '귀여운 졸라맨',
       'is_made': true,
     },
     const {
-      'image_name': 'cleanshot-2023-05-16-at-0345-1-bg.png',
+      'image_name': 'temp_muscle.png',
       'friend_name': '근육 짱짱맨',
       'is_made': false,
     },
@@ -52,7 +52,7 @@ class _SelectCharacterScreenState extends State<SelectCharacterScreen> {
               width: 139 * fem,
               height: 106 * fem,
               child: Image.asset(
-                'assets/images/download-3-1.png',
+                'assets/images/characters/select_character.png',
                 fit: BoxFit.cover,
               ),
             ),

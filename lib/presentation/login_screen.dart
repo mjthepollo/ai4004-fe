@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
-              imageText: 'assets/images/mail.png',
+              imageText: 'assets/images/icons/mail.png',
               textEditingController: _emailController,
               hintText: '이메일',
               textInputType: TextInputType.emailAddress,
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
-              imageText: 'assets/images/lock.png',
+              imageText: 'assets/images/icons/lock.png',
               textEditingController: _passwordController,
               hintText: '비밀번호',
               textInputType: TextInputType.emailAddress,

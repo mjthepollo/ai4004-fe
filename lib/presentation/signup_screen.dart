@@ -83,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
-              imageText: 'assets/images/user.png',
+              imageText: 'assets/images/icons/user.png',
               textEditingController: _usernameController,
               hintText: '김긍정',
               textInputType: TextInputType.text,
@@ -92,7 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
-              imageText: 'assets/images/mail.png',
+              imageText: 'assets/images/icons/mail.png',
               textEditingController: _emailController,
               hintText: 'smile@gmail.com',
               textInputType: TextInputType.emailAddress,
@@ -101,7 +101,7 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 20 * fem,
             ),
             TextFieldInput(
-              imageText: 'assets/images/lock.png',
+              imageText: 'assets/images/icons/lock.png',
               textEditingController: _passwordController,
               hintText: '비밀번호',
               textInputType: TextInputType.text,

@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 196 * fem,
                     height: 250 * fem,
                     child: Image.asset(
-                      'assets/images/background.png',
+                      'assets/images/characters/chat_screen.png',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -223,7 +223,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             width: 32 * fem,
                             height: 32 * fem,
                             child: Image.asset(
-                              'assets/images/notification-1.png',
+                              'assets/images/icons/notification.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -232,7 +232,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             width: 31 * fem,
                             height: 31 * fem,
                             child: Image.asset(
-                              'assets/images/setting.png',
+                              'assets/images/icons/setting.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -300,7 +300,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     SizedBox(height: 60 * fem),
                     GestureDetector(
                       onTap: () {
-                        print("hi");
                         if (_ableRecording) {
                           _onRecordButtonPressed();
                         }
