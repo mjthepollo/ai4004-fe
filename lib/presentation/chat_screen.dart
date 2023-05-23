@@ -20,7 +20,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final channel = WebSocketChannel.connect(
-    Uri.parse('ws://127.0.0.1:8000/talk/test/'),
+    Uri.parse('ws://4.230.8.32:8000/talk/test/'),
   );
   bool _isRecording = false;
   bool _ableRecording = true;
