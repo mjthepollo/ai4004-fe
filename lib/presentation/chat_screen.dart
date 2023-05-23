@@ -27,13 +27,18 @@ class _ChatScreenState extends State<ChatScreen> {
   static bool _talkingAI = false;
 
   final player = AudioPlayer();
-  final playlist = ConcatenatingAudioSource(
-    // Start loading next item just before reaching it
-    useLazyPreparation: true,
-    // Customise the shuffle algorithm
-    // Specify the playlist items
-    children: [],
-  );
+  final playlist = [];
+
+  void playNextAudio() async {
+    print(playlist);
+    if (playlist.isNotEmpty) {
+      print("HERE!");
+      // If there are any URLs in the queue...
+      await player.setUrl(playlist.removeAt(0));
+      await player.play(); // Start playing.
+      await player.pause();
+    }
+  }
 
   void listen() async {
     channel.stream.listen((message) async {
@@ -43,8 +48,11 @@ class _ChatScreenState extends State<ChatScreen> {
         print(response.content);
       } else if (response.isAudioUrl()) {
         print('TALKING AI To TRUE');
-        playlist.children.add(AudioSource.uri(Uri.parse(response.content)));
-        print(playlist.children);
+        playlist.add(response.content);
+        print(player.playing);
+        if (!player.playing) {
+          playNextAudio();
+        }
       } else if (response.isOutputText()) {
         print('DO SOMETHING FOR OUTPUT TEXT');
         print(response.content);
@@ -60,22 +68,26 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  void speak() async {
-    while (true) {
-      await Future.delayed(const Duration(seconds: 1));
-      print(playlist.children);
-      if (!player.playing) {
-        await player.setAudioSource(playlist,
-            initialIndex: 0, initialPosition: Duration.zero);
-      }
-    }
-  }
-
   @override
   void initState() {
     super.initState();
     listen();
-    speak();
+    player.playerStateStream.listen((state) {
+      if (state.playing) {}
+      switch (state.processingState) {
+        case ProcessingState.idle:
+          break;
+        case ProcessingState.loading:
+          break;
+        case ProcessingState.buffering:
+          break;
+        case ProcessingState.ready:
+          break;
+        case ProcessingState.completed:
+          playNextAudio();
+          break;
+      }
+    });
   }
 
   @override
