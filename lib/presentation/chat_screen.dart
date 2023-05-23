@@ -1,7 +1,10 @@
 import 'package:ai4005_fe/view_model/audio_recorder_controller.dart';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
+import "../object/message.dart";
 import '../util/color.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -16,9 +19,70 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final channel = WebSocketChannel.connect(
+    Uri.parse('ws://127.0.0.1:8000/talk/test/'),
+  );
   bool _isRecording = false;
   bool _ableRecording = true;
-  bool _talkingAI = false;
+  static bool _talkingAI = false;
+
+  final player = AudioPlayer();
+  final playlist = ConcatenatingAudioSource(
+    // Start loading next item just before reaching it
+    useLazyPreparation: true,
+    // Customise the shuffle algorithm
+    // Specify the playlist items
+    children: [],
+  );
+
+  void listen() async {
+    channel.stream.listen((message) async {
+      Response response = Response.toResponse(message);
+      if (response.isInputText()) {
+        print('DO SOMETHING FOR INPUT TEXT');
+        print(response.content);
+      } else if (response.isAudioUrl()) {
+        print('TALKING AI To TRUE');
+        playlist.children.add(AudioSource.uri(Uri.parse(response.content)));
+        print(playlist.children);
+      } else if (response.isOutputText()) {
+        print('DO SOMETHING FOR OUTPUT TEXT');
+        print(response.content);
+      } else if (response.isFinish()) {
+        print('TALKING AI To FALSE');
+        setState(() {
+          _talkingAI = false;
+          _ableRecording = true;
+        });
+      } else {
+        print('FUCKIND ELSE!');
+      }
+    });
+  }
+
+  void speak() async {
+    while (true) {
+      await Future.delayed(const Duration(seconds: 1));
+      print(playlist.children);
+      if (!player.playing) {
+        await player.setAudioSource(playlist,
+            initialIndex: 0, initialPosition: Duration.zero);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    listen();
+    speak();
+  }
+
+  @override
+  void dispose() {
+    channel.sink.close();
+    super.dispose();
+  }
 
   void _onRecordButtonPressed() async {
     setState(() {
@@ -29,46 +93,11 @@ class _ChatScreenState extends State<ChatScreen> {
       await widget.audioRecorderController.startRecording();
     } else {
       setState(() {
-        _ableRecording = !_ableRecording;
+        _ableRecording = false;
       });
       String? filePath = await widget.audioRecorderController.stopRecording();
       if (filePath != null) {
-        String audioUrl =
-            await widget.audioRecorderController.sendAudioData(filePath);
-        // DEBUG: Play audio file
-        AudioPlayer audioPlayer = AudioPlayer();
-
-        if (audioUrl != '') {
-          await audioPlayer.setSourceUrl(audioUrl);
-          setState(() {
-            _talkingAI = !_talkingAI;
-          });
-          Duration? duration = await audioPlayer.getDuration();
-          await audioPlayer.play(UrlSource(audioUrl));
-          if (duration != null) {
-            await Future.delayed(duration, () {
-              setState(() {
-                _talkingAI = !_talkingAI;
-                _ableRecording = !_ableRecording;
-              });
-            });
-          }
-        } else {
-          await audioPlayer.setSourceDeviceFile(filePath);
-          setState(() {
-            _talkingAI = !_talkingAI;
-          });
-          Duration? duration = await audioPlayer.getDuration();
-          await audioPlayer.play(DeviceFileSource(filePath));
-          if (duration != null) {
-            await Future.delayed(duration, () {
-              setState(() {
-                _talkingAI = !_talkingAI;
-                _ableRecording = !_ableRecording;
-              });
-            });
-          }
-        }
+        widget.audioRecorderController.sendAudioData(channel, filePath);
       }
     }
   }
@@ -281,6 +310,12 @@ class _ChatScreenState extends State<ChatScreen> {
                             ],
                           ),
                         ),
+                        // StreamBuilder(
+                        //   stream: channel.stream,
+                        //   builder: (context, snapshot) {
+                        //     return Text(snapshot.hasData ? '' : '');
+                        //   },
+                        // ),
                         Transform.translate(
                           offset: Offset(0, -400 * fem),
                           child: GestureDetector(
